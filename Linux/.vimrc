@@ -1,4 +1,3 @@
-" 更新时间：2015-01-18 21:30:31
 
 source $VIMRUNTIME/vimrc_example.vim
 
@@ -7,9 +6,6 @@ if has('mouse')
 endif
 
 set nobackup
-
-" 定义快捷键的前缀，即 <Leader>
-let mapleader=";"
 
 " 设置鼠标模式快捷键
 nmap <Leader>c :set mouse=c<CR>
@@ -131,6 +127,8 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'suan/vim-instant-markdown'
 Plugin 'qpkorr/vim-bufkill'
 Plugin 'skywind3000/asyncrun.vim'
+Plugin 'fatih/vim-go'
+Plugin 'Blackrush/vim-gocode'
 
 " 插件列表结束
 call vundle#end()
@@ -202,6 +200,7 @@ set hlsearch
 set nowrap
 
 " 设置状态栏主题风格
+set t_Co=256
 set laststatus=2
 "let g:airline_theme="solarized"
 let g:airline_theme="molokai"
@@ -209,9 +208,9 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 nnoremap <C-n> :bn<CR>
 nnoremap <C-p> :bp<CR>
-let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#enabled = 0
 let g:airline#extensions#whitespace#symbol = '!'
-let g:airline_powerline_fonts=0
+let g:airline_powerline_fonts=1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -331,13 +330,13 @@ nmap <Leader>tn :tnext<CR>
 nmap <Leader>tp :tprevious<CR>
 
 " 基于语义的代码导航
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 nnoremap <leader>jc :YcmCompleter GoToDeclaration<CR>
 " 只能是 #include 或已打开的文件
 nnoremap <leader>jf :YcmCompleter GoToDefinition<CR>
 
 let g:ycm_server_use_vim_stdout = 1 
-let g:ycm_server_log_level = 'debug'
+let g:ycm_server_log_level = 'error'
 
 
 " <<
@@ -598,3 +597,6 @@ vnoremap <Leader>he :call HtmlEscape()<CR>
 
 " bufkill
 map <C-c> :BD<cr>
+
+" goimports
+let g:go_fmt_command = "goimports"
